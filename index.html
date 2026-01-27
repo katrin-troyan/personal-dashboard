@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Dashboard</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="dashboard">
+      <h1 class="title">Мій Dashboard</h1>
+
+      <header>
+        <h2 class="greeting">Привіт Kateryna</h2>
+        <div class="clock">
+          <p class="current-time">00:00:00:</p>
+          <p class="cureent-data">1 січня 2026</p>
+        </div>
+      </header>
+
+      <main class="widgets">
+        <section id="weather" class="widget weather-widget">
+          <h2 class="widget-title">Погода</h2>
+          <div class="weather-info">
+            <p class="temperature">-°C</p>
+            <p class="weather-description">Завантаження...</p>
+            <p class="weather-location">Вінниця</p>
+          </div>
+        </section>
+
+        <section id="todo" class="widget todo-widget">
+          <h2 class="widget-title">Мої завдання</h2>
+          <form class="todo-form">
+            <input
+              type="text"
+              name="text"
+              class="todo-input"
+              placeholder="Введіть завдання..."
+              required
+            />
+            <button type="submit" class="todo-btn">Додати</button>
+          </form>
+          <ul id="todo-list" class="todo-list"></ul>
+        </section>
+      </main>
+    </div>
+    <script scr="js/app.js"></script>
+  </body>
+</html>
