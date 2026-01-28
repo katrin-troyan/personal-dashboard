@@ -1,0 +1,236 @@
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --text-color: #333333;
+  --text-light: #6b7280;
+  --bg-color: #f3f4f6;
+  --widget-bg: #ffffff;
+
+  --shadow-small: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+
+  --radius-small: 8px;
+  --radius-medium: 12px;
+  --radius-large: 16px;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: var (--spacing-medium);
+}
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-large);
+  color: var(--secondary-color);
+}
+/* #region HEADER */
+header {
+  display: flex;
+  flex-direction: row;
+  gap: 120px;
+  align-items: baseline;
+  justify-content: center;
+  background-color: var(--bg-color);
+  padding: var(--spacing-medium);
+  border-radius: var(--spacing-medium);
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+  margin-bottom: var(--spacing-large);
+}
+
+.greeting {
+  font-size: 1.8 rem;
+  color: var(--text-color);
+  margin-bottom: var(var(--spacing-medium));
+}
+
+.clock {
+  color: var(--text-light);
+}
+
+.current-time {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-small);
+}
+
+.current-date {
+  font-size: 1rem;
+}
+/* #endregion */
+
+/* #region  WIDGET*/
+.widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-large);
+}
+.widget {
+  background-color: var(--widget-bg);
+  padding: var(--spacing-large);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-medium);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.widget:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-large);
+}
+
+.widget-title {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-medium);
+  color: var(--primary-color);
+}
+/* #endregion */
+/* #region WEATHER */
+.weather-widget {
+  background: #2980b9;
+  background: -webkit-linear-gradient(to right, #ffffff, #6dd5fa, #2980b9);
+  background: linear-gradient(to right, #ffffff, #6dd5fa, #2980b9);
+  color: #ffffff;
+}
+
+.weather-info {
+  text-align: center;
+}
+
+.temperature {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: var(--spacing-medium);
+}
+
+.weather-description {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  text-transform: capitalize;
+}
+.weather-location {
+  color: var(--text-light);
+  text-transform: capitalize;
+}
+
+/* #endregion */
+/* #region TODO  */
+.todo-form {
+  display: flex;
+  gap: var(--spacing-small);
+  margin-bottom: var(--spacing-medium);
+}
+
+.todo-input {
+  flex: 1;
+  padding: var(--spacing-small) var(--spacing-medium);
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius-small);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.todo-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.todo-btn {
+  padding: var(--spacing-small) var(--spacing-large);
+  background: var(--secondary-color);
+  color: white;
+  border-radius: var(--radius-small);
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.todo-btn:hover {
+  transform: scale(1.05);
+}
+
+.todo-btn:active {
+  transform: scale(0.95);
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-medium);
+  padding: var(--spacing-medium);
+  background-color: var(--bg-color);
+  border-radius: var(--radius-small);
+  margin-bottom: var(--spacing-small);
+  transition: all 0.3s ease;
+}
+
+.todo-item:hover {
+  background-color: #e5e7eb;
+}
+.todo-btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+.todo-item.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+/* #endregion */
+/* #region RESPONSIVE */
+@media (max-width: 768px) {
+  body {
+    padding: var(--spacing-small);
+  }
+  header {
+    flex-direction: column;
+    gap: var(--spacing-medium);
+  }
+  .title {
+    font-size: 2rem;
+  }
+
+  .widgets {
+    grid-template-columns: 1fr;
+  }
+
+  .widget {
+    padding: var(--spacing-medium);
+  }
+
+  .current-time {
+    font-size: 1.5rem;
+  }
+
+  .temperature {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .todo-form {
+    flex-direction: column;
+  }
+
+  .todo-btn {
+    width: 100%;
+  }
+}
+/* #endregion */
