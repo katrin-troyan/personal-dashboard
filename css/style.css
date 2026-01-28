@@ -54,7 +54,18 @@ header {
   color: var(--text-color);
   margin-bottom: var(var(--spacing-medium));
 }
-
+.change-name-btn {
+  margin-top: var(--spacing-small);
+  padding: var(--spacing-small) var(--spacing-medium);
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--radius-small);
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+.change-name-btn:hover {
+  background-color: var(--secondary-color);
+}
 .clock {
   color: var(--text-light);
 }
