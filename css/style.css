@@ -200,6 +200,67 @@ header {
   opacity: 0.6;
   text-decoration: line-through;
 }
+
+.todo-list {
+  margin-top: var(--spacing-medium);
+}
+
+.message {
+  text-align: center;
+  color: var(--text-light);
+  padding: var(--spacing-large);
+  font-style: italic;
+}
+.message:hover {
+  background-color: transparent;
+  transform: none;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-medium);
+  padding: var(--spacing-medium);
+  background-color: var(--bg-color);
+  border-radius: var(--radius-small);
+  margin-bottom: var(--spacing-small);
+  transition: all 0.3s ease;
+}
+
+.todo-item:hover {
+  background-color: #e5e7eb;
+  transform: translateX(5px);
+}
+
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.todo-delete {
+  padding: var(--spacing-small);
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.todo-delete:hover {
+  transform: scale(1.2);
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  opacity: 0.6;
+  color: var(--text-light);
+}
 /* #endregion */
 /* #region RESPONSIVE */
 @media (max-width: 768px) {
