@@ -46,6 +46,17 @@
             />
             <button type="submit" class="todo-btn">Додати</button>
           </form>
+          <div class="todo-filters">
+            <button class="filter-btn active" data-filter="all">
+              Всі <span class="filter-count"></span>
+            </button>
+            <button class="filter-btn" data-filter="active">
+              Активні <span class="filter-count"></span>
+            </button>
+            <button class="filter-btn" data-filter="completed">
+              Виконані <span class="filter-count"></span>
+            </button>
+          </div>
           <ul id="todo-list" class="todo-list"></ul>
         </section>
       </main>

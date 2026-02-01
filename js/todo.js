@@ -1,8 +1,29 @@
 const todoForm = document.querySelector(".todo-form");
 const todoInput = document.querySelector(".todo-input");
 const todoList = document.querySelector(".todo-list");
+const filterBtns = document.querySelectorAll(".filter-btn");
 
-let todos = [];
+const STORAGE_KEY = "todos";
+
+function saveTodos() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
+}
+
+function localTodos() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+
+  if (!saved) {
+    return [];
+  }
+  try {
+    return JSON.parse(saved);
+  } catch (error) {
+    console.error("Помилка завантаження:", error);
+    return [];
+  }
+}
+
+let todos = localTodos();
 
 function addTodo(text) {
   const todo = {
@@ -13,11 +34,13 @@ function addTodo(text) {
   };
 
   todos.push(todo);
+  saveTodos();
   renderTodos();
 }
 
 function deleteTodo(id) {
   todos = todos.filter((todo) => todo.id !== id);
+  saveTodos();
   renderTodos();
 }
 
@@ -28,6 +51,7 @@ function toggleTodo(id) {
     }
     return todo;
   });
+  saveTodos();
   renderTodos();
 }
 
@@ -96,3 +120,5 @@ todoForm.addEventListener("submit", function (event) {
   todoInput.focus();
 });
 renderTodos();
+
+let filterStatus = "all";
