@@ -1,6 +1,7 @@
 const todoForm = document.querySelector(".todo-form");
 const todoInput = document.querySelector(".todo-input");
 const todoList = document.querySelector(".todo-list");
+const filtersContainer = document.querySelector(".todo-filters");
 const filterBtns = document.querySelectorAll(".filter-btn");
 
 const STORAGE_KEY = "todos";
@@ -9,7 +10,7 @@ function saveTodos() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
 }
 
-function localTodos() {
+function loadTodos() {
   const saved = localStorage.getItem(STORAGE_KEY);
 
   if (!saved) {
@@ -23,7 +24,7 @@ function localTodos() {
   }
 }
 
-let todos = localTodos();
+let todos = loadTodos();
 
 function addTodo(text) {
   const todo = {
@@ -90,15 +91,52 @@ function createTodoElement(todo) {
   return li;
 }
 
-function renderTodos() {
-  todoList.innerHTML = "";
-  if (todos.length === 0) {
-    todoList.innerHTML =
-      '      <li class="message">Всі завдання виконані. Додай нове!</li>';
+let filterStatus = "all";
+
+function getFilteredTodos() {
+  if (filterStatus === "all") {
+    return todos;
+  } else if (filterStatus === "active") {
+    return todos.filter((todo) => !todo.completed);
+  } else {
+    return todos.filter((todo) => todo.completed);
+  }
+}
+
+filtersContainer.addEventListener("click", function (event) {
+  if (!event.target.classList.contains("filter-btn")) {
     return;
   }
 
-  todos.forEach((todo) => {
+  filterBtns.forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  event.target.classList.add("active");
+  filterStatus = event.target.dataset.filter;
+  renderTodos();
+});
+
+function getEmptyMessage() {
+  if (filterStatus === "active") {
+    return "Всі завдання виконані! 🎉";
+  }
+
+  if (filterStatus === "completed") {
+    return "Немає виконаних завдань.";
+  }
+
+  return "Немає завдань. Додайте нове!";
+}
+function renderTodos() {
+  todoList.innerHTML = "";
+  const filteredTodos = getFilteredTodos();
+
+  if (filteredTodos.length === 0) {
+    todoList.innerHTML = `<li class="message">${getEmptyMessage()}</li>`;
+    return;
+  }
+
+  filteredTodos.forEach((todo) => {
     const todoElement = createTodoElement(todo);
     todoList.appendChild(todoElement);
   });
@@ -120,5 +158,3 @@ todoForm.addEventListener("submit", function (event) {
   todoInput.focus();
 });
 renderTodos();
-
-let filterStatus = "all";
