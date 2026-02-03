@@ -5,14 +5,18 @@ const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid
 const temperatureElement = document.querySelector(".temperature");
 const descriptionElement = document.querySelector(".weather-description");
 const locationElement = document.querySelector(".weather-location");
+const iconElement = document.querySelector(".weather-icon");
 
 function displayWeather(data) {
   const temp = Math.round(data.main.temp);
   const description = data.weather[0].description;
   const location = data.name;
+  const icon = data.weather[0].icon;
 
   temperatureElement.textContent = `${temp}°C`;
   descriptionElement.textContent = description;
+  locationElement.textContent = location;
+  iconElement.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 }
 
 async function fetchWeather() {

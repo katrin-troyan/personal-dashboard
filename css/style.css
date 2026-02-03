@@ -119,6 +119,16 @@ header {
 
 .weather-info {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-small);
+}
+.weather-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .temperature {
@@ -336,6 +346,15 @@ header {
   .temperature {
     font-size: 2.5rem;
   }
+  .quote-widget {
+    padding: var(--spacing-large) var(--spacing-medium);
+    min-height: 150px;
+  }
+
+  .quote-widget::before {
+    font-size: 8rem;
+    left: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -349,6 +368,101 @@ header {
 
   .todo-btn {
     width: 100%;
+  }
+}
+/* #endregion */
+/* #region QUOTE WIDGET */
+.quote-widget {
+  margin-top: var(--spacing-large);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+  padding: var(--spacing-large) var(--spacing-large);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-widget::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 15rem;
+  font-weight: bold;
+  opacity: 0.1;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.quote-container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.quote-text {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-medium);
+  font-weight: 300;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.quote-author {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-small);
+  opacity: 0.95;
+}
+.quote-refresh {
+  position: absolute;
+  top: var(--spacing-medium);
+  right: var(--spacing-medium);
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-refresh:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.quote-refresh:active {
+  transform: scale(0.95);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 /* #endregion */

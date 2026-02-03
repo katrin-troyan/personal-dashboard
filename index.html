@@ -28,6 +28,12 @@
         <section id="weather" class="widget weather-widget">
           <h2 class="widget-title">Погода</h2>
           <div class="weather-info">
+            <img
+              id="weather-icon"
+              class="weather-icon"
+              src=""
+              alt="Weather Icon"
+            />
             <p class="temperature">-°C</p>
             <p class="weather-description">Завантаження...</p>
             <p class="weather-location">Вінниця</p>
@@ -54,10 +60,18 @@
           <ul id="todo-list" class="todo-list"></ul>
         </section>
       </main>
+      <section class="widget quote-widget">
+        <div class="quote-container">
+          <button class="quote-refresh" title="Нова цитата">🔄</button>
+          <p class="quote-text">Завантаження цитати...</p>
+          <p class="quote-author"></p>
+        </div>
+      </section>
     </div>
     <script src="js/clock.js"></script>
     <script src="js/todo.js"></script>
     <script src="js/weather.js"></script>
+    <script type="module" src="js/quote/quote.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
