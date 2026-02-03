@@ -13,7 +13,6 @@ function displayWeather(data) {
 
   temperatureElement.textContent = `${temp}°C`;
   descriptionElement.textContent = description;
-  locationElement.textContent = location;
 }
 
 async function fetchWeather() {
@@ -31,8 +30,8 @@ async function fetchWeather() {
   }
 }
 
-function initWeather(){
+function initWeather() {
   fetchWeather();
-  setInterval(fetchWeather,30 * 60 * 1000)
+  setInterval(fetchWeather, 30 * 60 * 1000);
 }
-initWeather()
+initWeather();
